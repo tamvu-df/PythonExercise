@@ -1,9 +1,15 @@
-class Shape:
+from abc import ABC, abstractmethod
+class Shape(ABC):
+    @abstractmethod
     def area(self) -> float:
         pass
+    @abstractmethod
     def circumference(self) -> float:
         pass
-
+class Shape2(Shape):
+    def __init__(self, side1: float, side2: float):
+        self.side1 = side1
+        self.side2 = side2
 class Circle(Shape):
     def __init__(self, radius: float):
         self.radius = radius
@@ -29,6 +35,7 @@ class Rectangle(Shape):
     def circumference(self) -> float:
         return (self.length + self.width) * 2
 if __name__ == "__main__":
+    shape2 = Shape2(3, 5)
     circle = Circle(5)
     square = Square(4)
     rectangle = Rectangle(3, 5)
