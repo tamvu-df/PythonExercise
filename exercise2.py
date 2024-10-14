@@ -64,19 +64,19 @@ def extract_email(input_string):
     return lst_email
 
 
-def process_text(input_string, config):
+def process_text(input_string, **kwargs):
     result = {}
-    if config["count_words"] == True:
+    if config["count_words"]:
         result["count_words"] = count_unique_words(input_string)
-    if len(config["find_keywords"]) > 0:
+    if config["find_keywords"]:
         result["keywords"] = count_word_by_keyword(
             input_string, config["find_keywords"]
         )
-    if config["uppercase"] == True:
+    if config["uppercase"]:
         result["uppercase_text"] = input_string.upper()
-    if config["extract_integers"] == True:
+    if config["extract_integers"]:
         result["integers"] = extract_numeric(input_string)
-    if config["extract_email"] == True:
+    if config["extract_email"]:
         result["emails"] = extract_email(input_string)
     return result
 
